@@ -1,0 +1,12 @@
+
+<div >
+    <div class="chat-msg " [ngClass]="{ 'recieved': data.type==='recieved', 'sent': data.type==='sent' }" >
+        <div class="markdown-body" [innerHTML]="parseMardownText(data.text)">
+        </div>
+        <div *ngIf="isButtonAvailable" class="btn-cover my-5px" role="list" aria-label="query list">
+            <div class="my-5px mr-5px" *ngFor='let btn of buttons'>
+                <button type="button" [class.clicked]="btn.clicked" [disabled]= "btn.disabled" class="btn-primary" tabindex="0" (click)="buttonClicked(btn.value,btn.text, data.id)">{{btn.text}}</button>
+            </div>
+        </div>
+    </div>
+</div>
